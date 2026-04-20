@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform-app
+  labels:
+    app: platform-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platform-app
+  template:
+    metadata:
+      labels:
+        app: platform-app
+    spec:
+      containers:
+        - name: platform-app
+          image: phanle1010/platform-app:latest
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: platform-app-config
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi

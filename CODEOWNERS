@@ -1,0 +1,5 @@
+# Every change to gitops manifests requires platform team review
+*       phanle1010
+
+# Production overlays require extra scrutiny
+/apps/*/overlays/production/   phanle1010
