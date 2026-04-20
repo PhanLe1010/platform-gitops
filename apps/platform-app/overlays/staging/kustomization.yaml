@@ -6,6 +6,10 @@ namespace: platform-app
 resources:
   - ../../base
 
+images:
+  - name: phanle1010/platform-app
+    newTag: latest
+
 patches:
   - path: configmap-patch.yaml
     target:
