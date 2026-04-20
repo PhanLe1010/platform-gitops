@@ -4,17 +4,17 @@ kind: Kustomization
 namespace: platform-app
 
 resources:
-  - ../../base
+- ../../base
 
 images:
-  - name: phanle1010/platform-app
-    newTag: latest
+- name: phanle1010/platform-app
+  newTag: 31cd2b074c97ee6bc3ab5f25ab941a3372e47d00
 
 patches:
-  - path: configmap-patch.yaml
-    target:
-      kind: ConfigMap
-      name: platform-app-config
+- path: configmap-patch.yaml
+  target:
+    kind: ConfigMap
+    name: platform-app-config
 
 commonLabels:
   environment: staging
